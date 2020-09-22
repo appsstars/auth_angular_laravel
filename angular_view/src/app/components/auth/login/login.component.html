@@ -1,0 +1,27 @@
+<section id="login">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form">
+					<form #login="ngForm" (ngSubmit)="onLogin(login.value)">
+
+						<div class="form-group">
+							<span><b>Usuario</b></span>
+							<input type="text" name="email" ngModel class="form-control" >
+						</div>
+
+						<div class="form-group">
+							<span><b>Contraseña</b></span>
+							<input type="password" name="password" ngModel class="form-control" >
+						</div>
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-outline-danger">Acceder</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>		
