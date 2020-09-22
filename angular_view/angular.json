@@ -26,6 +26,9 @@
             "styles": [
               "src/assets/lib/bootstrap-4.5.2/css/bootstrap.min.css",
               "src/assets/lib/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/lib/forms/css/opensans-font.css",
+              "src/assets/lib/forms/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css",
+              "src/assets/lib/forms/css/style.css",
               "src/styles.css"
             ],
             "scripts": [
