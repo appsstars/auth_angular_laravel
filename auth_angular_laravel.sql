@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2020 a las 04:31:54
+-- Tiempo de generación: 23-09-2020 a las 01:14:15
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.30
+-- Versión de PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -55,16 +55,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(151, '2014_10_12_000000_create_users_table', 1),
-(152, '2014_10_12_100000_create_password_resets_table', 1),
-(153, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
-(154, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
-(155, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
-(156, '2016_06_01_000004_create_oauth_clients_table', 1),
-(157, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
-(158, '2019_08_19_000000_create_failed_jobs_table', 1),
-(159, '2020_09_21_121906_add_table_rol', 1),
-(160, '2020_09_21_122203_add_table_type_user', 1);
+(1, '2014_10_12_000000_tipo_documento', 1),
+(2, '2014_10_12_000001_create_users_table', 1),
+(3, '2014_10_12_100000_create_password_resets_table', 1),
+(4, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(5, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(6, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(7, '2016_06_01_000004_create_oauth_clients_table', 1),
+(8, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(9, '2019_08_19_000000_create_failed_jobs_table', 1),
+(10, '2020_09_21_121906_add_table_rol', 1),
+(11, '2020_09_21_122203_add_table_type_user', 1);
 
 -- --------------------------------------------------------
 
@@ -119,14 +120,6 @@ CREATE TABLE `oauth_clients` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Volcado de datos para la tabla `oauth_clients`
---
-
-INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Laravel Personal Access Client', 'x8ZH5YUYQNPy2NEIriHRZcykgKz3H3Rrpn2wtUrY', NULL, 'http://localhost', 1, 0, 0, '2020-09-21 17:59:59', '2020-09-21 17:59:59'),
-(2, NULL, 'Laravel Password Grant Client', 'h7aYMwYQPlQq6Ij1eTfBMJrSlh1xv98NcMnFK3EQ', 'users', 'http://localhost', 0, 1, 0, '2020-09-21 17:59:59', '2020-09-21 17:59:59');
-
 -- --------------------------------------------------------
 
 --
@@ -139,13 +132,6 @@ CREATE TABLE `oauth_personal_access_clients` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `oauth_personal_access_clients`
---
-
-INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2020-09-21 17:59:59', '2020-09-21 17:59:59');
 
 -- --------------------------------------------------------
 
@@ -189,6 +175,19 @@ CREATE TABLE `rol` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_documento`
+--
+
+CREATE TABLE `tipo_documento` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tipo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `type_user`
 --
 
@@ -209,8 +208,12 @@ CREATE TABLE `type_user` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_tipo_documento` bigint(20) UNSIGNED NOT NULL,
+  `nombres` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direccion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `estado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -281,6 +284,12 @@ ALTER TABLE `rol`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `tipo_documento`
+--
+ALTER TABLE `tipo_documento`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `type_user`
 --
 ALTER TABLE `type_user`
@@ -293,6 +302,7 @@ ALTER TABLE `type_user`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_direccion_unique` (`direccion`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
@@ -309,24 +319,30 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_documento`
+--
+ALTER TABLE `tipo_documento`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
