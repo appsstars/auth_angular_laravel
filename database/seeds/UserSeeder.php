@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
     {	
     		
             $user = new User();
-            $user->nombres = "Admin";
             $user->id_tipo_documento = "1";
+            $user->nombres = "Admin";            
             $user->apellidos = "Sistema";
             $user->direccion = "ninguna";
             $user->email = "admin";

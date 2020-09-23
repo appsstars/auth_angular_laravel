@@ -15,6 +15,7 @@ class RolSeeder extends Seeder
 		$rols = array(
 			array('tipo'=>'superadmin'),
 			array('tipo'=>'admin'),
+			array('tipo'=>'cliente'),
 		);
 
 		foreach ($rols as $value) {

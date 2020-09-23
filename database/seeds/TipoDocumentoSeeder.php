@@ -14,9 +14,10 @@ class TipoDocumentoSeeder extends Seeder
     {
     		$tipos_documento = array(
     			array('tipo'=>'Cedula de ciudadania'),
-    			array('tipo'=>'Targeta de identidad'),
+    			array('tipo'=>'Cedula de Extrangeria'),
     			array('tipo'=>'Nit'),
-    			array('tipo'=>'Passaporte')
+				array('tipo'=>'Passaporte'),
+				array('tipo'=>'Carnet Diplomatico')
 
     		);
 
