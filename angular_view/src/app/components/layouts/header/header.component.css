@@ -1,3 +1,61 @@
-#menu{
-	background: #da291c
+body{
+  margin:0;
+  padding: 0
+}
+nav {
+    background: #e63535;
+    padding: 15px 10px
+}
+
+nav ul li{
+  border-bottom: 1px #ccc solid;
+}
+a.btn-menu {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    right: 5px;
+    cursor: pointer;
+      z-index: 2
+}
+a.btn-menu i{
+  color: #fff;
+  font-size: 20px;
+
+}
+.logo{
+  color: #fff;
+  margin:0 10px;
+}
+
+.menu {
+    background: #00000038;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.estado-menu{
+	z-index: -1 !important;
+	background: transparent;
+	transition: 1.7s
+}
+
+nav ul {
+    list-style: none;
+    background: #fff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: 270px;
+    padding: 70px 11px 3px 16px;
+     transform:translateX(-100%);
+    transition: 0.4s;
+   
 }

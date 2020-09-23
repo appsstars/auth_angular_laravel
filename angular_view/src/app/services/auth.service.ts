@@ -14,7 +14,7 @@ export class AuthService {
 
   login(form){
      	const headers = new HttpHeaders({"Content-type":"application/json"});
-  		return this.http.post(this.api+"api/login", form, {headers: headers});
+  		return this.http.post(this.api+"api/auth/login", form, {headers: headers});
   }
 }
   

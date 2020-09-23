@@ -12,7 +12,7 @@
 											<div class="form-holder">
 												<fieldset>
 													<legend>Usuario</legend>
-													<input type="text" class="form-control"  name="email" placeholder="usuario y/o correo" required>
+													<input type="text" class="form-control"  ngModel name="email" placeholder="usuario y/o correo" required>
 												</fieldset>
 											</div>
 										</div>
@@ -20,14 +20,21 @@
 										<div class="form-group">
 											<div class="form-holder">
 												<fieldset>
-													<legend>Password</legend>
-													<input type="text" class="form-control" name="password" placeholder="Password" required>
+													<legend>Contraseña</legend>
+													<input type="password" class="form-control" ngModel name="password" placeholder="Contraseña" required>
 												</fieldset>
 											</div>
 										</div>
 
 										<div class="form-group">
+											<a href="">Olvido su contraseña</a>
+										</div>
+
+										<div class="form-group">
 											<button type="submit" class="btn btn-block btn-outline-danger">Ingresar</button>
+										</div>
+										<div class="form-group">
+											<a [routerLink]="['/register']" class="btn btn-block btn-outline-secondary">Registro</a>
 										</div>
 									</div>		
 							</div>

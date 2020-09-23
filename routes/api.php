@@ -13,17 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-
-Route::group([
-    'prefix' => 'auth'
-], function () {
+Route::group(['prefix' => 'auth'], function () {
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
   
-    Route::group([
-      'middleware' => 'auth:api'
-    ], function() {
+    Route::group(['middleware' => 'auth:api'], function() {
         Route::get('logout', 'AuthController@logout');
         Route::get('user', 'AuthController@user');
+
+        //dashboard
+        Route::resource('usuario','UsuarioController');
+        Route::resource('rol','RolController');
+        Route::resource('horariodisponible','HorarioDisponibleController');
+        Route::resource('asistencia','AsistenciaController');
+        Route::resource('rutina','RutinaController');
+        Route::get('rutina/details/{id_rutina}','RutinaController@details');
+        Route::resource('categoria','CategoriaController');
+
     });
 });

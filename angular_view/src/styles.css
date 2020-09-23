@@ -1,1 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+.precarga {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: #00000038;
+    z-index: 1;
+    display: none
+}
+
+.c-header {
+    position: absolute;
+    background: #ffffff52;
+    box-shadow: 0 1px 4px 0 rgb(40 185 15 / 14%);
+    height: 4px;
+    width: 100%;
+    /* position: relative; */
+    top: 0;
+}
+
+
+.c-header-loader {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.c-slidingLoader {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  overflow: hidden;
+}
+.c-slidingLoader-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: loading 0.4s infinite;
+          animation: loading 0.4s infinite
+}
+.c-slidingLoader-inner::before {
+  content: '';
+  display: block;
+  background-color: #ff9f9f;
+  position: relative;
+  height: 100%;
+  width: 30%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+@-webkit-keyframes loading {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+}
+@keyframes loading {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+}
+
+input:focus, input.form-control:focus {
+
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
