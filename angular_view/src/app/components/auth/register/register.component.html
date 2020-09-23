@@ -1,1 +1,87 @@
-<p>register</p>
+<ng-header></ng-header>
+<section id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="form">
+                    <!-- <form #login="ngForm" (ngSubmit)="onLogin(login.value)"></form> -->
+                    <form #register="ngForm">
+                        <div class="inner">
+                            <div class="form-row">
+                                <div class="col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Tipo de Documento</legend>
+                                                <select class="opcion" id="exampleFormControlSelect1" placeholder="tipo de documento">
+                                                    <option>Tipo de Documento</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Nombres</legend>
+                                                <input type="text" class="" name="nombres" placeholder="Nombre Completo" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Apellidos</legend>
+                                                <input type="text" class="" name="apellidos" placeholder="Apellidos" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Documento</legend>
+                                                <input type="text" class="" name="documento" placeholder="Documento" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Correo</legend>
+                                                <input type="text" class="" name="email" placeholder="j....@ejemplo.com" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Contraseña</legend>
+                                                <input type="text" class="" name="password" placeholder="Contraseña" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-holder">
+                                            <fieldset>
+                                                <legend>Verificar Contraseña</legend>
+                                                <input type="text" class="" name="verificar" placeholder="Verficar Contraseña" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block btn-outline-danger">Ingresar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
