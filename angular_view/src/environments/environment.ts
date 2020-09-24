@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api:"http://localhost/desarrollo/AppsStars/auth_angular_laravel/public/"
+  api:"http://localhost/produccion/auth_angular_laravel/public/"
  // api:"http://auth.com/"
 };
 

@@ -20,19 +20,20 @@ class AuthController extends Controller
         }
 
         $usuario = new User();
+        $usuario->id_tipo_documento = $request->id_tipo_documento;
         $usuario->nombres = $request->nombres;
         $usuario->apellidos = $request->apellidos;
         $usuario->documento = $request->documento;
         $usuario->email = $request->email;
-        $usuario->estado = $request->estado;
-        $usuario->password = $password; 
+        $usuario->estado = '1';
+        $usuario->password = bcrypt($password); 
         $usuario->save();
 
         $id_usuario = $usuario->id;
 
         $type_user = new TypeUser();
         $type_user->id_user = $id_usuario;
-        $type_user->id_rol = '4';
+        $type_user->id_rol = '3';
         $type_user->save();
 
         return response()->json(['response'=>'Usuario creado correctamente.']);

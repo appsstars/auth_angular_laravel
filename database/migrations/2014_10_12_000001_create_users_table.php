@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('id_tipo_documento')->unsigned();
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('direccion')->unique();
+            $table->string('documento')->unique();
             $table->string('email')->unique();
             $table->string('estado');
             $table->timestamp('email_verified_at')->nullable();

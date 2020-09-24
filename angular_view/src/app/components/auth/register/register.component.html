@@ -5,7 +5,7 @@
             <div class="col-md-12 col-lg-12">
                 <div class="form">
                     <!-- <form #login="ngForm" (ngSubmit)="onLogin(login.value)"></form> -->
-                    <form #register="ngForm">
+                    <form novalidate #register="ngForm" (ngSubmit)="onSubmit(register.value)">
                         <div class="inner">
                             <div class="form-row">
                                 <div class="col-md-12 col-lg-12">
@@ -13,67 +13,84 @@
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Tipo de Documento</legend>
-                                                <select class="opcion" id="exampleFormControlSelect1" placeholder="tipo de documento">
-                                                    <option>Tipo de Documento</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <select class="opcion" name="id_tipo_documento" placeholder="tipo de documento" ngModel #id_tipo_documento="ngModel" required>
+                                                    <option></option>
+                                                    <option *ngFor='let tipo of tipos'  value="{{tipo.id}}">{{tipo.tipo}}</option>
                                                 </select>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="id_tipo_documento.errors?.required && id_tipo_documento.touched">
+                                                seleccione una opcion
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Nombres</legend>
-                                                <input type="text" class="" name="nombres" placeholder="Nombre Completo" required>
+                                                <input type="text" class="" name="nombres" placeholder="Nombre Completo" ngModel #nombres="ngModel" required>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="nombres.errors?.required && nombres.touched">
+                                                Ingrese sus Nombres
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Apellidos</legend>
-                                                <input type="text" class="" name="apellidos" placeholder="Apellidos" required>
+                                                <input type="text" class="" name="apellidos" placeholder="Apellidos" ngModel #apellidos="ngModel" required>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="apellidos.errors?.required && apellidos.touched">
+                                                Ingrese sus Apellidos
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Documento</legend>
-                                                <input type="text" class="" name="documento" placeholder="Documento" required>
+                                                <input type="text" class="" name="documento" placeholder="Documento" ngModel #documento="ngModel" required>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="documento.errors?.required && documento.touched">
+                                                Ingrese su Documento
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Correo</legend>
-                                                <input type="text" class="" name="email" placeholder="j....@ejemplo.com" required>
+                                                <input type="email" class="" name="email" placeholder="j....@ejemplo.com" ngModel #email="ngModel" required>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="email.errors?.required && email.touched ">
+                                                Ingrese su Correo
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Contraseña</legend>
-                                                <input type="text" class="" name="password" placeholder="Contraseña" required>
+                                                <input type="text" class="" name="password" placeholder="Contraseña" ngModel #password="ngModel" required>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="password.errors?.required && password.touched ">
+                                                Ingrese su Contraseña
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-holder">
                                             <fieldset>
                                                 <legend>Verificar Contraseña</legend>
-                                                <input type="text" class="" name="verificar" placeholder="Verficar Contraseña" required>
+                                                <input type="text" class="" name="verificar" placeholder="Verficar Contraseña" ngModel #verificar="ngModel" required>
                                             </fieldset>
+                                            <div class="alert alert-danger" *ngIf="verificar.errors?.required && verificar.touched ">
+                                                Ingrese su Contraseña
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-block btn-outline-danger">Ingresar</button>
+                                        <button type="submit" class="btn btn-block btn-outline-danger" [disabled]="register.invalid">Registrar</button>
                                     </div>
                                 </div>
                             </div>

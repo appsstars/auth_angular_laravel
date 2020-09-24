@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoDocumento extends Model
 {
     protected $table = 'tipo_documento';
-
     protected $fillable = ['tipo'];
+
+    public function usuarios()
+    {
+        return $this->belongsTo('App\Users');
+    }
 }

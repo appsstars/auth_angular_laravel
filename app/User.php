@@ -10,9 +10,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
    protected $fillable = [
-        'nombres','apellidos','direccion','estado', 'email', 'password',
+        'id_tipo_documento','nombres','apellidos','documento', 'email','estado', 'password',
     ];
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function tipos_documentos()
+    {
+        return $this->hasMany('App\TipoDocumento');
+    }
 }
